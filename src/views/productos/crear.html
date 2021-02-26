@@ -1,0 +1,14 @@
+{% extends 'layouts/base.html' %} {% block titulo %} Crear producto {% endblock %} {% block contenido %}
+<h1>Crear producto</h1>
+<a href="{{url_for('productos')}}">Volver</a>
+
+<form action="{{ url_for('crear_producto') }}" method="POST">
+    <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <!-- #enlace label input -->
+        <input type="text" class="form-control" id="nombre" name="nombre">
+    </div>
+    <button type="submit">Guardar</button>
+</form>
+
+{% endblock %}

@@ -1,6 +1,9 @@
 {% extends 'layouts/base.html' %} {% block titulo %} Productos {% endblock %} {% block contenido %}
 <h1>Listado de Productos</h1>
 
+<!-- <a href="https://www.google.com/" target="_blank">Google</a> -->
+<a href="{{url_for('crear_producto')}}">Crear</a>
+
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -9,14 +12,12 @@
         </tr>
     </thead>
     <tbody>
+        {%for producto in productos%}
         <tr>
-            <td>1</td>
-            <td>Gaseosa</td>
+            <td>{{producto[0]}}</td>
+            <td>{{producto[1]}}</td>
         </tr>
-        <tr>
-            <td>2</td>
-            <td>Galleta</td>
-        </tr>
+        {%endfor%}
+
     </tbody>
-</table>
-<a href="www.google.com">link</a> {% endblock %}
+</table>{% endblock %}

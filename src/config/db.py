@@ -10,3 +10,4 @@ config ={
 
 #** para accionar todos los elementos del diccionario config
 DB = mariadb.connect(**config)
+DB.autocommit = True

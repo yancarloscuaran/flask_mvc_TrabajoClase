@@ -2,13 +2,17 @@
 <h1>Listado de Productos</h1>
 
 <!-- <a href="https://www.google.com/" target="_blank">Google</a> -->
-<a href="{{url_for('crear_producto')}}">Crear</a>
+<a href="{{url_for('crear_producto')}}" class="btn btn-primary">Crear</a>
 
 <table class="table table-bordered">
     <thead>
         <tr>
             <th>ID</th>
             <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Precio Venta</th>
+            <th>Precio Compra</th>
+            <th>Estado</th>
         </tr>
     </thead>
     <tbody>
@@ -16,6 +20,10 @@
         <tr>
             <td>{{producto[0]}}</td>
             <td>{{producto[1]}}</td>
+            <td>{{producto[2]}}</td>
+            <td>{{producto[3]}}</td>
+            <td>{{producto[4]}}</td>
+            <td>{{producto[5]}}</td>
         </tr>
         {%endfor%}
 

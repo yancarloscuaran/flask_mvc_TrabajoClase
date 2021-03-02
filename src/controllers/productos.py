@@ -25,8 +25,15 @@ def crear_producto():
     # es la creacion del producto
     nombre= request.form.get('nombre')
 
+    descripcion= request.form.get('descripcion')
+
+    precio_venta= request.form.get('precio_venta')
+
+    precio_compra= request.form.get('precio_compra')
+
+    estado= request.form.get('estado')
+
     productosModel = ProductosModel()
 
-    productosModel.crear(nombre)
-
+    productosModel.crear(nombre, descripcion, precio_venta, precio_compra,estado)
     return redirect(url_for('productos'))

@@ -5,3 +5,7 @@ if __name__ == '__main__':
 
 #Funcionalidad agregar  
 # productos Nombre, descripcion, precio venta, precio compra, estado => Activo o Inactivo Repositorio en GITHUB Grupos de 2
+
+#Integrantes
+#Yan Carlos Cuaran Imbacuan
+#Edwar Andres Hernandez Meneses

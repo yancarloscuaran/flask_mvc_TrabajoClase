@@ -10,9 +10,11 @@
             <th>ID</th>
             <th>Nombre</th>
             <th>Descripcion</th>
-            <th>Precio Venta</th>
-            <th>Precio Compra</th>
+            <th>Precio Compra COP</th>
+            <th>Precio Venta COP</th>
+            <th>Ganancia (%)</th>
             <th>Estado</th>
+            <th>Edicion</th>
         </tr>
     </thead>
     <tbody>
@@ -24,6 +26,10 @@
             <td>{{producto[3]}}</td>
             <td>{{producto[4]}}</td>
             <td>{{producto[5]}}</td>
+            <td>{{producto[6]}}</td>
+            <td>
+                <a href="{{url_for('actualizar_producto', id=producto[0])}}" class="btn btn-primary">Editar</a>
+            </td>
         </tr>
         {%endfor%}
 

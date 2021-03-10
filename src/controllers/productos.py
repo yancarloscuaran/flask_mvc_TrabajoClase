@@ -27,13 +27,35 @@ def crear_producto():
 
     descripcion= request.form.get('descripcion')
 
+    precio_compra= request.form.get('precio_compra')
+
     precio_venta= request.form.get('precio_venta')
 
-    precio_compra= request.form.get('precio_compra')
+    ganancia= request.form.get('ganancia')
 
     estado= request.form.get('estado')
 
     productosModel = ProductosModel()
 
-    productosModel.crear(nombre, descripcion, precio_venta, precio_compra,estado)
+    productosModel.crear(nombre, descripcion, precio_compra, precio_venta, ganancia,estado)
     return redirect(url_for('productos'))
+
+@app.route('/productos/editar/<int:id>', methods=('GET', 'POST'))
+def actualizar_producto(id):
+    if request.method == 'GET':
+        
+        return render_template('productos/editar.html')
+
+    nombre= request.form.get('nombre')
+    descripcion= request.form.get('descripcion')
+    precio_compra= request.form.get('precio_compra')
+    precio_venta= request.form.get('precio_venta')
+    ganancia= request.form.get('ganancia')
+    estado= request.form.get('estado')
+
+    productosModel = ProductosModel()
+    
+    productosModel.editar(id,nombre, descripcion, precio_compra, precio_venta, ganancia,estado)
+    
+    return redirect(url_for('productos'))
+

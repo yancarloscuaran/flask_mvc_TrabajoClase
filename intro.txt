@@ -23,3 +23,20 @@ if(numero > 1){
     //si no se cumple la funcion
 }
 */
+
+
+
+config ={
+    'host': '',
+    'port': 0,
+    'user': '',
+    'password': '',
+    'database': ''
+}
+
+#** para accionar todos los elementos del diccionario config
+if config['host'] != '':
+    DB = mariadb.connect(**config)
+    DB.autocommit = True
+else:
+    DB = False

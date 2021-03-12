@@ -1,6 +1,8 @@
 from flask import render_template, request, redirect, url_for
 from src import app 
 from src.models.productos import ProductosModel
+import json
+
 
 #Refactori reestructurar pero que siga funcionando de igual manera
 @app.route('/productos')
@@ -12,6 +14,21 @@ def productos():
 
 
     return render_template('productos/index.html', productos = productos)
+
+@app.route('/instalacion', methods=['POST'])
+def instalacion():
+    datos = {
+        "base_datos": request.form.get('base_datos'),
+        "usuario": request.form.get('usuario'),
+        "contrasena": request.form.get('contrasena'),
+        "host": request.form.get('host'),
+        "puerto": int(request.form.get('puerto')),
+    }
+
+    conexion = open(CONEXION_PATH, 'w')
+
+    conexion.write(json.dumps(datos))
+
 
 @app.route('/productos/crear', methods=['GET', 'POST'])
 def crear_producto():
@@ -41,10 +58,12 @@ def crear_producto():
     return redirect(url_for('productos'))
 
 @app.route('/productos/editar/<int:id>', methods=('GET', 'POST'))
-def actualizar_producto(id):
+def actualizar_producto(id): 
+
     if request.method == 'GET':
-        
+        # Mostramos el formulario de edicion
         return render_template('productos/editar.html')
+
 
     nombre= request.form.get('nombre')
     descripcion= request.form.get('descripcion')

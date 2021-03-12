@@ -37,8 +37,8 @@
         <label for="estado">Estado</label>
         <select class="form-control" required name="estado" id="estado">
             <option value="" disabled="disabled" selected="selected">seleccionar...</option>
-            <option value="1">Activo</option>
-            <option value="0">Inactivo</option>
+            <option value="Activo">Activo</option>
+            <option value="Inactivo">Inactivo</option>
         </select>
     </div>
 
@@ -46,4 +46,38 @@
 
     <a href="{{url_for('productos')}}" class="btn btn-primary">Volver</a>
 </form>
+
+<script>
+    //sirve para recuperar datos #
+    let inputPrecioCompra = document.querySelector('#precio_compra')
+    let inputPrecioVenta = document.querySelector('#precio_venta')
+    let inputGanancia = document.querySelector('#ganancia')
+
+    // escuchador de eventos change cuando cambia el elemto
+    inputPrecioCompra.addEventListener('change', cambioPrecioCompra)
+
+    function cambioPrecioCompra(e) {
+        console.log('cambiando precio de compra')
+    }
+
+    inputPrecioVenta.addEventListener('change', cambioPrecioVenta)
+
+    function cambioPrecioVenta(e) {
+        //esta cambiand precio de venta
+        let precio_venta = parseInt(inputPrecioVenta.value)
+        let precio_compra = parseInt(inputPrecioCompra.value)
+            //let ganancia = (precio_venta - precio_compra) / 100
+        let ganancia = ((precio_venta - precio_compra) / precio_compra) * 100
+        inputGanancia.value = ganancia
+    }
+
+    inputGanancia.addEventListener('change', cambioGanancia)
+
+    function cambioGanancia(e) {
+        let precio_compra = parseInt(inputPrecioCompra.value)
+        let ganancia = parseInt(inputGanancia.value)
+        let precio_venta = (precio_compra * (ganancia / 100)) + precio_compra
+        inputPrecioVenta.value = precio_venta
+    }
+</script>
 {% endblock %}
